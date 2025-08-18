@@ -12,8 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  test-typescript:
-    name: TypeScript Tests
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,6 +26,9 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
+      
+      - name: Setup Dependencies
+        run: npm-ci
 
       - name: Lint
         id: npm-lint
